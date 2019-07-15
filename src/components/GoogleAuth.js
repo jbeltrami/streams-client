@@ -24,7 +24,7 @@ class GoogleAuth extends Component {
     const { signIn: login, signOut: logout } = this.props;
 
     if (isSignedIn) {
-      login();
+      login(this.auth.currentUser.get().getId());
     } else {
       logout();
     }
