@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { createStream } from '../../actions';
 
 class StreamCreate extends Component {
   // eslint-disable-next-line
@@ -30,9 +32,11 @@ class StreamCreate extends Component {
   };
 
   // eslint-disable-next-line
-  onSubmit(formValues) {
-    console.log(formValues);
-  }
+  onSubmit = (formValues) => {
+    const { createStream: create } = this.props;
+
+    create(formValues);
+  };
 
   render() {
     const { handleSubmit } = this.props;
@@ -56,6 +60,7 @@ class StreamCreate extends Component {
 
 StreamCreate.propTypes = {
   handleSubmit: PropTypes.func,
+  createStream: PropTypes.func,
 };
 
 const validate = formValues => {
@@ -69,7 +74,12 @@ const validate = formValues => {
   return errors;
 };
 
-export default reduxForm({
+const formWrapped = reduxForm({
   form: 'streamCreate',
   validate,
 })(StreamCreate);
+
+export default connect(
+  null,
+  { createStream }
+)(formWrapped);
