@@ -31,10 +31,12 @@ class GoogleAuth extends Component {
   };
 
   onSignInClick = () => {
+    // The following method is provided by Google's OAuth system. It's not the same as the actions imported to this file.
     this.auth.signIn();
   };
 
   onSignOutClicked = () => {
+    // The following method is provided by Google's OAuth system. It's not the same as the actions imported to this file.
     this.auth.signOut();
   };
 
@@ -81,5 +83,6 @@ const mapStateToProps = state => ({ isSignedIn: state.auth.isSignedIn });
 
 export default connect(
   mapStateToProps,
+  // These are the redux actions called above in this file.
   { signIn, signOut }
 )(GoogleAuth);

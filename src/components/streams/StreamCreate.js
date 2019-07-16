@@ -1,5 +1,22 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { Field, reduxForm } from 'redux-form';
 
-const StreamCreate = () => <div>StreamCreate</div>;
+class StreamCreate extends Component {
+  // eslint-disable-next-line
+  renderInput({ input }) {
+    return <input {...input} />;
+  }
 
-export default StreamCreate;
+  render() {
+    return (
+      <form>
+        <Field name="title" component={this.renderInput} />
+        <Field name="description" component={this.renderInput} />
+      </form>
+    );
+  }
+}
+
+export default reduxForm({
+  form: 'streamCreate',
+})(StreamCreate);
