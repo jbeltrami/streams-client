@@ -67,7 +67,10 @@
     "test": "node scripts/test.js"
   },
   "eslintConfig": {
-    "extends": "wesbos"
+    "extends": "wesbos",
+    "rules": {
+      "class-methods-use-this": "off"
+    }
   },
   "browserslist": {
     "production": [
